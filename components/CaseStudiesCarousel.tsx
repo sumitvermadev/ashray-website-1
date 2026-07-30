@@ -1,53 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const caseStudies = [
-  {
-    id: "cs-1",
-    tags: ["[Headless API]", "[Monolith Decommissioning]", "[CI/CD]"],
-    title: "Global Automotive Enterprise (Salesforce Core Modernization)",
-    challenge: "Severe API throttling, deployment deadlocks, and slow UI load times across legacy monolithic architecture.",
-    solution: "Decommissioned legacy components; built a headless REST API layer and streamlined modular deployment workflows.",
-    metric1: "$130K+",
-    label1: "SAVINGS",
-    metric2: "60%",
-    label2: "FASTER CI/CD",
-  },
-  {
-    id: "cs-2",
-    tags: ["[2GP Managed Package]", "[Metering API]", "[Sub-Ledger Automation]"],
-    title: "Open-Source Metering & Billing SaaS (Usage-Based Architecture)",
-    challenge: "Needed a robust, scalable commercial billing and usage-based metering package for high-throughput multi-tenant SaaS.",
-    solution: "Architected and deployed a modular 2GP Managed Package integrating real-time usage event ingestion with advanced Apex batch engines.",
-    metric1: "$20M+",
-    label1: "TX VOLUME",
-    metric2: "80+",
-    label2: "CLIENTS",
-  },
-  {
-    id: "cs-3",
-    tags: ["[2GP Managed Package]", "[Vertex Tax Engine]", "[Async Batch]"],
-    title: "FinTech & AppExchange Leader (Automated Sub-Ledger & Tax)",
-    challenge: "Urgent need for commercial billing, tax calculation, and multi-tenant sub-ledger automation.",
-    solution: "Architected a secure 2GP Managed Package with automated Vertex tax integrations.",
-    metric1: "100%",
-    label1: "TAX COMPLIANCE",
-    metric2: "AUTO",
-    label2: "BILLING",
-  },
-  {
-    id: "cs-4",
-    tags: ["[Experience Cloud]", "[CSV/XML Parsing]", "[Advanced Flows]"],
-    title: "B2B Logistics & Energy Supplier (Asynchronous Ingestion & Admin Flows)",
-    challenge: "Operations teams wasting massive hours manually parsing vendor data.",
-    solution: "Custom Experience Cloud portal with asynchronous file ingestion engine and record-triggered Flow automation.",
-    metric1: "80+",
-    label1: "HOURS SAVED",
-    metric2: "10x",
-    label2: "PERFORMANCE",
-  },
-];
+import Link from "next/link";
+import { caseStudiesData } from "@/lib/caseStudiesData";
 
 export default function CaseStudiesCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -68,12 +23,12 @@ export default function CaseStudiesCarousel() {
   };
 
   const handleNext = () => {
-    const nextIdx = (currentIndex + 1) % caseStudies.length;
+    const nextIdx = (currentIndex + 1) % caseStudiesData.length;
     scrollToCard(nextIdx);
   };
 
   const handlePrev = () => {
-    const prevIdx = (currentIndex - 1 + caseStudies.length) % caseStudies.length;
+    const prevIdx = (currentIndex - 1 + caseStudiesData.length) % caseStudiesData.length;
     scrollToCard(prevIdx);
   };
 
@@ -82,7 +37,7 @@ export default function CaseStudiesCarousel() {
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
-        const next = (prev + 1) % caseStudies.length;
+        const next = (prev + 1) % caseStudiesData.length;
         const carousel = carouselRef.current;
         if (carousel) {
           const cards = carousel.querySelectorAll<HTMLElement>(".case-study-card");
@@ -95,12 +50,11 @@ export default function CaseStudiesCarousel() {
         }
         return next;
       });
-    }, 4500);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  // Update active index on manual user scroll
   const handleScroll = () => {
     const carousel = carouselRef.current;
     if (!carousel) return;
@@ -114,16 +68,16 @@ export default function CaseStudiesCarousel() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full">
       {/* Controls Bar */}
       <div className="flex justify-between items-center px-1">
         <div className="flex items-center gap-2">
-          {caseStudies.map((study, idx) => (
+          {caseStudiesData.map((study, idx) => (
             <button
               key={study.id}
               id={`case-study-dot-${idx}`}
               type="button"
-              aria-label={`Go to slide ${idx + 1}`}
+              aria-label={`Go to slide ${idx + 1}: ${study.title}`}
               onClick={() => scrollToCard(idx)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 currentIndex === idx
@@ -164,44 +118,100 @@ export default function CaseStudiesCarousel() {
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setTimeout(() => setIsPaused(false), 2000)}
-        className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-4 scrollbar-hide px-1"
+        className="flex overflow-x-auto snap-x snap-mandatory gap-4 sm:gap-6 pb-4 scrollbar-hide px-1 items-stretch w-full"
       >
-        {caseStudies.map((item) => (
-          <div
+        {caseStudiesData.map((item) => (
+          <article
             key={item.id}
-            className="case-study-card flex-shrink-0 w-[88vw] sm:w-[80vw] md:w-[calc(50%-12px)] snap-start bg-white dark:bg-surface-container-low border border-slate-200 dark:border-surface-bright/20 rounded-xl overflow-hidden group hover:border-blue-500/40 dark:hover:border-primary/40 transition-all flex flex-col shadow-sm"
+            className="case-study-card flex-shrink-0 w-[90vw] sm:w-[82vw] md:w-[calc(50%-12px)] snap-start bg-white dark:bg-[#0B0F17] text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-blue-500/30 rounded-2xl overflow-hidden group hover:border-blue-500 dark:hover:border-cyan-400/60 transition-all duration-300 flex flex-col justify-between shadow-xl"
           >
-            <div className="p-6 sm:p-8 space-y-5 sm:space-y-6 flex-grow">
-              <div className="flex flex-wrap gap-2">
-                {item.tags.map((tag, tIdx) => (
-                  <span key={tIdx} className="bg-blue-500/10 dark:bg-primary/10 text-blue-700 dark:text-primary px-2.5 py-1 rounded text-xs font-code font-medium">
-                    {tag}
+            {/* Main Card Executive Summary View */}
+            <div className="p-6 sm:p-8 space-y-6 flex-grow flex flex-col justify-between">
+              <div className="space-y-5">
+                {/* Executive Badge & Capability Tags Bar */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-cyan-400 animate-pulse" />
+                    <span className="text-[11px] font-code text-blue-600 dark:text-cyan-400 font-bold uppercase tracking-widest block">
+                      [{item.badge}]
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="bg-blue-500/10 dark:bg-cyan-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20 dark:border-cyan-500/30 px-3 py-1 rounded-full text-xs font-code font-semibold shadow-inner"
+                      >
+                        [{tag}]
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Case Study Title */}
+                <h3 className="font-bold text-xl sm:text-2xl text-slate-900 dark:text-slate-50 leading-tight group-hover:text-blue-600 dark:group-hover:text-cyan-300 transition-colors">
+                  {item.title}
+                </h3>
+
+                {/* Business Challenge Visual Card Box */}
+                <div className="p-5 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-500/30 space-y-2">
+                  <h4 className="text-xs uppercase tracking-widest font-code text-amber-700 dark:text-amber-400 font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-sm">warning</span>
+                    <span>BUSINESS CHALLENGE &amp; LEAKAGE RISKS</span>
+                  </h4>
+                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    {item.executiveChallenge}
+                  </p>
+                </div>
+
+                {/* Solution Implemented Visual Card Box */}
+                <div className="p-5 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-500/30 space-y-2">
+                  <h4 className="text-xs uppercase tracking-widest font-code text-blue-700 dark:text-cyan-400 font-bold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-sm">verified</span>
+                    <span>SOLUTION IMPLEMENTED</span>
+                  </h4>
+                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    {item.executiveSolution}
+                  </p>
+                </div>
+              </div>
+
+              {/* Action Button: Directly opens Technical Architecture Page in a NEW TAB */}
+              <div className="pt-4 border-t border-slate-200 dark:border-white/10">
+                <Link
+                  href={`/case-studies/${item.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 py-3.5 rounded-xl bg-blue-50 dark:bg-gradient-to-r dark:from-blue-900/40 dark:via-cyan-900/30 dark:to-blue-900/40 hover:bg-blue-100 dark:hover:from-blue-800/60 dark:hover:to-cyan-800/50 border border-blue-300 dark:border-cyan-500/40 text-blue-700 dark:text-cyan-300 font-code font-bold text-xs uppercase tracking-wider flex items-center justify-between transition-all duration-300 shadow-lg cursor-pointer group/btn"
+                >
+                  <span className="flex items-center gap-2">
+                    <span>View Technical Architecture &amp; Specs</span>
+                    <span className="material-symbols-outlined text-base group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5 transition-transform">
+                      open_in_new
+                    </span>
                   </span>
-                ))}
-              </div>
-              <h3 className="font-semibold text-lg sm:text-xl text-slate-900 dark:text-on-surface leading-snug">{item.title}</h3>
-              <div className="space-y-4">
-                <div className="space-y-1">
-                  <h4 className="text-xs uppercase tracking-widest font-code text-cyan-600 dark:text-secondary font-semibold">CHALLENGE</h4>
-                  <p className="text-slate-600 dark:text-on-surface-variant text-sm sm:text-base leading-relaxed">{item.challenge}</p>
-                </div>
-                <div className="space-y-1">
-                  <h4 className="text-xs uppercase tracking-widest font-code text-blue-600 dark:text-primary font-semibold">SOLUTION</h4>
-                  <p className="text-slate-600 dark:text-on-surface-variant text-sm sm:text-base leading-relaxed">{item.solution}</p>
-                </div>
+                  <span className="text-[10px] bg-blue-600/10 dark:bg-cyan-500/20 text-blue-700 dark:text-cyan-300 px-2.5 py-1 rounded font-bold border border-blue-300 dark:border-cyan-500/30">
+                    OPEN IN NEW TAB ↗
+                  </span>
+                </Link>
               </div>
             </div>
-            <div className="bg-slate-50 dark:bg-surface-container-highest/30 p-6 sm:p-8 flex justify-between items-center border-t border-slate-200 dark:border-white/5">
-              <div className="space-y-1">
-                <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-primary">{item.metric1}</div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-outline font-code">{item.label1}</div>
-              </div>
-              <div className="space-y-1 text-right">
-                <div className="text-xl sm:text-2xl font-bold text-cyan-600 dark:text-secondary">{item.metric2}</div>
-                <div className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-outline font-code">{item.label2}</div>
-              </div>
+
+            {/* ROI Metrics Grid (Bottom Bar of Main Card) */}
+            <div className="bg-slate-50 dark:bg-surface-container-highest/30 p-5 sm:p-6 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-slate-200 dark:border-white/5">
+              {item.metrics.map((metric, mIdx) => (
+                <div key={mIdx} className="space-y-0.5">
+                  <div className="text-base sm:text-lg font-extrabold text-blue-600 dark:text-primary">
+                    {metric.value}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-widest text-slate-500 dark:text-outline font-code font-medium leading-tight">
+                    {metric.label}
+                  </div>
+                </div>
+              ))}
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>

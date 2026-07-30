@@ -17,7 +17,13 @@ export default function Header() {
       e.preventDefault();
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        if (id === "intake-form") {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          const yOffset = -90;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
       } else {
         router.push(route);
       }
@@ -25,29 +31,21 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-slate-100/90 dark:bg-[#0f131c]/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+    <header className="fixed top-0 left-0 w-full z-50 bg-slate-100/90 dark:bg-[#030712]/90 backdrop-blur-xl border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
       <div className="max-w-max-width mx-auto flex justify-between items-center px-4 sm:px-6 md:px-margin-desktop h-20">
         <Link href="/" className="flex items-center gap-3">
           <Logo id="header-logo" className="h-8 sm:h-9 md:h-10" />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* 3 Main Desktop Navigation Headers */}
         <nav className="hidden lg:flex items-center gap-8">
           <Link
             id="nav-architecture"
-            href="/services"
-            onClick={(e) => handleNavClick(e, "architecture", "/services")}
+            href="/#architecture"
+            onClick={(e) => handleNavClick(e, "architecture", "/#architecture")}
             className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-xs uppercase tracking-widest font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
           >
-            Salesforce Core
-          </Link>
-          <Link
-            id="nav-compliance"
-            href="/services"
-            onClick={(e) => handleNavClick(e, "compliance", "/services")}
-            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-xs uppercase tracking-widest font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
-          >
-            Compliance Integration
+            Core Capabilities
           </Link>
           <Link
             id="nav-case-studies"
@@ -73,7 +71,7 @@ export default function Header() {
             id="header-scope-btn"
             href="/scope-project"
             onClick={(e) => handleNavClick(e, "intake-form", "/scope-project")}
-            className="bg-blue-600 dark:bg-primary text-white dark:text-on-primary px-6 py-2.5 rounded text-xs uppercase tracking-widest font-code font-bold hover:brightness-110 transition-all glow-primary inline-flex items-center gap-2"
+            className="bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 px-6 py-2.5 rounded-lg text-xs uppercase tracking-widest font-code font-extrabold hover:brightness-110 transition-all glow-primary inline-flex items-center gap-2 border border-cyan-400/50"
           >
             Scope Your Project
           </Link>
@@ -98,22 +96,14 @@ export default function Header() {
 
       {/* Mobile & Tablet Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-100/98 dark:bg-[#0f131c]/98 backdrop-blur-2xl border-b border-slate-200 dark:border-white/10 px-6 py-6 space-y-4 animate-in slide-in-from-top-2 shadow-2xl">
+        <div className="lg:hidden bg-slate-100/98 dark:bg-[#030712]/98 backdrop-blur-2xl border-b border-slate-200 dark:border-white/10 px-6 py-6 space-y-4 animate-in slide-in-from-top-2 shadow-2xl">
           <Link
             id="mobile-nav-architecture"
-            href="/services"
-            onClick={(e) => handleNavClick(e, "architecture", "/services")}
+            href="/#architecture"
+            onClick={(e) => handleNavClick(e, "architecture", "/#architecture")}
             className="block text-sm uppercase tracking-widest font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
           >
-            Salesforce Core
-          </Link>
-          <Link
-            id="mobile-nav-compliance"
-            href="/services"
-            onClick={(e) => handleNavClick(e, "compliance", "/services")}
-            className="block text-sm uppercase tracking-widest font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
-          >
-            Compliance Integration
+            Core Capabilities
           </Link>
           <Link
             id="mobile-nav-case-studies"
@@ -135,7 +125,7 @@ export default function Header() {
             id="mobile-header-scope-btn"
             href="/scope-project"
             onClick={(e) => handleNavClick(e, "intake-form", "/scope-project")}
-            className="w-full mt-4 bg-blue-600 dark:bg-primary text-white dark:text-on-primary py-3.5 rounded text-center text-xs uppercase tracking-widest font-code font-bold block shadow-md"
+            className="w-full mt-4 bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 py-3.5 rounded-lg text-center text-xs uppercase tracking-widest font-code font-extrabold block shadow-md border border-cyan-400/50"
           >
             Scope Your Project
           </Link>

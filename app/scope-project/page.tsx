@@ -20,7 +20,7 @@ export default function ScopeProjectPage() {
           Scope Your Salesforce Project
         </h1>
         <p className="text-slate-600 dark:text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-          Tell us about your target cloud, architecture requirements, and timeline. Upon submission, your details will be pre-filled into your Zoom discovery call session.
+          Tell us about your target cloud, architecture requirements, and timeline. Upon submission, your details will be pre-filled into your Zoho discovery call session.
         </p>
       </section>
 
