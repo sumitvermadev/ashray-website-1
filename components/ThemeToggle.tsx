@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("ashray-theme") as "dark" | "light" | null;
@@ -15,8 +15,9 @@ export default function ThemeToggle() {
         document.documentElement.classList.add("dark");
       }
     } else {
-      // Default to dark mode
-      document.documentElement.classList.add("dark");
+      // Default to light mode
+      setTheme("light");
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 

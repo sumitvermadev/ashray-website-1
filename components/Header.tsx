@@ -43,7 +43,7 @@ export default function Header() {
             id="nav-architecture"
             href="/#architecture"
             onClick={(e) => handleNavClick(e, "architecture", "/#architecture")}
-            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-xs uppercase tracking-widest font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
+            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-sm uppercase tracking-wider font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
           >
             Core Capabilities
           </Link>
@@ -51,7 +51,7 @@ export default function Header() {
             id="nav-case-studies"
             href="/case-studies"
             onClick={(e) => handleNavClick(e, "case-studies", "/case-studies")}
-            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-xs uppercase tracking-widest font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
+            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-sm uppercase tracking-wider font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
           >
             Case Studies
           </Link>
@@ -59,7 +59,7 @@ export default function Header() {
             id="nav-operating-model"
             href="/operating-model"
             onClick={(e) => handleNavClick(e, "operating-model", "/operating-model")}
-            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-xs uppercase tracking-widest font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
+            className="text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 font-bold transition-all text-sm uppercase tracking-wider font-code border-b-2 border-transparent hover:border-blue-600 dark:hover:border-cyan-400 pb-0.5"
           >
             Operating Model
           </Link>
@@ -71,7 +71,7 @@ export default function Header() {
             id="header-scope-btn"
             href="/scope-project"
             onClick={(e) => handleNavClick(e, "intake-form", "/scope-project")}
-            className="bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 px-6 py-2.5 rounded-lg text-xs uppercase tracking-widest font-code font-extrabold hover:brightness-110 transition-all glow-primary inline-flex items-center gap-2 border border-cyan-400/50"
+            className="bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 px-6 py-2.5 rounded-lg text-sm uppercase tracking-wider font-code font-extrabold hover:brightness-110 transition-all glow-primary inline-flex items-center gap-2 border border-cyan-400/50"
           >
             Scope Your Project
           </Link>
@@ -101,7 +101,7 @@ export default function Header() {
             id="mobile-nav-architecture"
             href="/#architecture"
             onClick={(e) => handleNavClick(e, "architecture", "/#architecture")}
-            className="block text-sm uppercase tracking-widest font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
+            className="block text-base uppercase tracking-wider font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
           >
             Core Capabilities
           </Link>
@@ -109,7 +109,7 @@ export default function Header() {
             id="mobile-nav-case-studies"
             href="/case-studies"
             onClick={(e) => handleNavClick(e, "case-studies", "/case-studies")}
-            className="block text-sm uppercase tracking-widest font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
+            className="block text-base uppercase tracking-wider font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
           >
             Case Studies
           </Link>
@@ -117,7 +117,7 @@ export default function Header() {
             id="mobile-nav-operating-model"
             href="/operating-model"
             onClick={(e) => handleNavClick(e, "operating-model", "/operating-model")}
-            className="block text-sm uppercase tracking-widest font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
+            className="block text-base uppercase tracking-wider font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
           >
             Operating Model
           </Link>
@@ -125,7 +125,7 @@ export default function Header() {
             id="mobile-header-scope-btn"
             href="/scope-project"
             onClick={(e) => handleNavClick(e, "intake-form", "/scope-project")}
-            className="w-full mt-4 bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 py-3.5 rounded-lg text-center text-xs uppercase tracking-widest font-code font-extrabold block shadow-md border border-cyan-400/50"
+            className="w-full mt-4 bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 py-3.5 rounded-lg text-center text-sm uppercase tracking-wider font-code font-extrabold block shadow-md border border-cyan-400/50"
           >
             Scope Your Project
           </Link>

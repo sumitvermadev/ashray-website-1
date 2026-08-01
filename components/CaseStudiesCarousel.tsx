@@ -133,7 +133,7 @@ export default function CaseStudiesCarousel() {
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full bg-blue-600 dark:bg-cyan-400 animate-pulse" />
                     <span className="text-[11px] font-code text-blue-600 dark:text-cyan-400 font-bold uppercase tracking-widest block">
-                      [{item.badge}]
+                      {item.badge}
                     </span>
                   </div>
 
@@ -141,9 +141,9 @@ export default function CaseStudiesCarousel() {
                     {item.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="bg-blue-500/10 dark:bg-cyan-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20 dark:border-cyan-500/30 px-3 py-1 rounded-full text-xs font-code font-semibold shadow-inner"
+                        className="bg-blue-500/10 dark:bg-cyan-500/10 text-blue-700 dark:text-cyan-300 border border-blue-500/20 dark:border-cyan-500/30 px-3 py-1 rounded-full text-sm font-code font-semibold shadow-inner"
                       >
-                        [{tag}]
+                        {tag}
                       </span>
                     ))}
                   </div>
@@ -155,44 +155,39 @@ export default function CaseStudiesCarousel() {
                 </h3>
 
                 {/* Business Challenge Visual Card Box */}
-                <div className="p-5 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-500/30 space-y-2">
-                  <h4 className="text-xs uppercase tracking-widest font-code text-amber-700 dark:text-amber-400 font-bold flex items-center gap-2">
-                    <span className="material-symbols-outlined text-sm">warning</span>
+                <div className="p-5 rounded-xl bg-rose-500/10 dark:bg-rose-950/20 border border-rose-500/30 dark:border-rose-500/30 space-y-2">
+                  <h4 className="text-sm uppercase tracking-wider font-code text-rose-700 dark:text-rose-400 font-extrabold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-lg text-rose-600 dark:text-rose-400">crisis_alert</span>
                     <span>BUSINESS CHALLENGE &amp; LEAKAGE RISKS</span>
                   </h4>
-                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                     {item.executiveChallenge}
                   </p>
                 </div>
 
                 {/* Solution Implemented Visual Card Box */}
                 <div className="p-5 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-500/30 space-y-2">
-                  <h4 className="text-xs uppercase tracking-widest font-code text-blue-700 dark:text-cyan-400 font-bold flex items-center gap-2">
-                    <span className="material-symbols-outlined text-sm">verified</span>
+                  <h4 className="text-sm uppercase tracking-wider font-code text-blue-700 dark:text-cyan-400 font-extrabold flex items-center gap-2">
+                    <span className="material-symbols-outlined text-lg text-blue-600 dark:text-cyan-400">verified</span>
                     <span>SOLUTION IMPLEMENTED</span>
                   </h4>
-                  <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
                     {item.executiveSolution}
                   </p>
                 </div>
               </div>
 
-              {/* Action Button: Directly opens Technical Architecture Page in a NEW TAB */}
+              {/* Action Button: Unified Primary Brand Blue CTA */}
               <div className="pt-4 border-t border-slate-200 dark:border-white/10">
                 <Link
                   href={`/case-studies/${item.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full px-4 py-3.5 rounded-xl bg-blue-50 dark:bg-gradient-to-r dark:from-blue-900/40 dark:via-cyan-900/30 dark:to-blue-900/40 hover:bg-blue-100 dark:hover:from-blue-800/60 dark:hover:to-cyan-800/50 border border-blue-300 dark:border-cyan-500/40 text-blue-700 dark:text-cyan-300 font-code font-bold text-xs uppercase tracking-wider flex items-center justify-between transition-all duration-300 shadow-lg cursor-pointer group/btn"
+                  className="w-full px-5 py-3.5 rounded-xl bg-blue-600 dark:bg-blue-600 text-white hover:bg-blue-700 dark:hover:bg-blue-500 font-code font-extrabold text-sm uppercase tracking-wider flex items-center justify-between transition-all duration-300 shadow-md cursor-pointer group/btn border border-blue-400/40 active:scale-[0.99]"
                 >
-                  <span className="flex items-center gap-2">
-                    <span>View Technical Architecture &amp; Specs</span>
-                    <span className="material-symbols-outlined text-base group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5 transition-transform">
-                      open_in_new
-                    </span>
-                  </span>
-                  <span className="text-[10px] bg-blue-600/10 dark:bg-cyan-500/20 text-blue-700 dark:text-cyan-300 px-2.5 py-1 rounded font-bold border border-blue-300 dark:border-cyan-500/30">
-                    OPEN IN NEW TAB ↗
+                  <span>Explore Technical Architecture &amp; Specs</span>
+                  <span className="material-symbols-outlined text-xl group-hover/btn:translate-x-1 transition-transform">
+                    arrow_forward
                   </span>
                 </Link>
               </div>

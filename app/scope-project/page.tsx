@@ -9,19 +9,13 @@ export const metadata = {
 
 export default function ScopeProjectPage() {
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-background text-slate-900 dark:text-on-background selection:bg-blue-500 selection:text-white font-sans transition-colors duration-300">
+    <main className="min-h-screen bg-slate-50 dark:bg-[#030712] text-slate-900 dark:text-slate-100 selection:bg-blue-500 selection:text-white font-sans transition-colors duration-300">
       <Header />
 
-      <section className="pt-32 pb-8 px-4 sm:px-6 md:px-margin-desktop max-w-max-width mx-auto text-center space-y-4">
-        <span className="text-xs uppercase tracking-widest font-code text-blue-600 dark:text-cyan-400 font-bold block">
-          PROJECT INITIATION
-        </span>
+      <section className="pt-32 pb-6 px-4 sm:px-6 md:px-margin-desktop max-w-max-width mx-auto text-center">
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-          Scope Your Salesforce Project
+          Schedule a 1:1 discovery call with us
         </h1>
-        <p className="text-slate-600 dark:text-on-surface-variant text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-          Tell us about your target cloud, architecture requirements, and timeline. Upon submission, your details will be pre-filled into your Zoho discovery call session.
-        </p>
       </section>
 
       <section className="py-10 px-4 sm:px-6 md:px-margin-desktop max-w-3xl mx-auto">
