@@ -17,13 +17,9 @@ export default function Header() {
       e.preventDefault();
       const element = document.getElementById(id);
       if (element) {
-        if (id === "intake-form") {
-          element.scrollIntoView({ behavior: "smooth", block: "center" });
-        } else {
-          const yOffset = -90;
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
+        const yOffset = -90;
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       } else {
         router.push(route);
       }
@@ -67,14 +63,6 @@ export default function Header() {
 
         <div className="hidden lg:flex items-center gap-4">
           <ThemeToggle />
-          <Link
-            id="header-scope-btn"
-            href="/scope-project"
-            onClick={(e) => handleNavClick(e, "intake-form", "/scope-project")}
-            className="bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 px-6 py-2.5 rounded-lg text-sm uppercase tracking-wider font-code font-extrabold hover:brightness-110 transition-all glow-primary inline-flex items-center gap-2 border border-cyan-400/50"
-          >
-            Scope Your Project
-          </Link>
         </div>
 
         {/* Mobile & Tablet Controls */}
@@ -120,14 +108,6 @@ export default function Header() {
             className="block text-base uppercase tracking-wider font-code font-bold text-slate-900 dark:text-slate-100 hover:text-blue-600 dark:hover:text-cyan-400 py-3 border-b border-slate-200 dark:border-white/5"
           >
             Operating Model
-          </Link>
-          <Link
-            id="mobile-header-scope-btn"
-            href="/scope-project"
-            onClick={(e) => handleNavClick(e, "intake-form", "/scope-project")}
-            className="w-full mt-4 bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 py-3.5 rounded-lg text-center text-sm uppercase tracking-wider font-code font-extrabold block shadow-md border border-cyan-400/50"
-          >
-            Scope Your Project
           </Link>
         </div>
       )}

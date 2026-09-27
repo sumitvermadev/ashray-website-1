@@ -122,15 +122,15 @@ export default function ServicesPage() {
             Ready to Modernize Your Salesforce Architecture?
           </h3>
           <p className="text-slate-600 dark:text-on-surface-variant text-sm">
-            Schedule a 30-minute discovery call to review your current org health and compliance requirements.
+            Get in touch with us to review your current org health and compliance requirements.
           </p>
-          <Link
-            href="/scope-project"
+          <a
+            href="mailto:ashraytechnologies@gmail.com"
             className="inline-flex items-center gap-2 bg-blue-600 dark:bg-primary text-white dark:text-on-primary font-code font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded-xl hover:brightness-110 transition-all glow-primary shadow-lg"
           >
-            <span>Scope Your Project</span>
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </Link>
+            <span>Contact Us</span>
+            <span className="material-symbols-outlined text-base">mail</span>
+          </a>
         </div>
       </section>
 

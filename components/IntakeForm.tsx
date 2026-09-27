@@ -29,45 +29,6 @@ export default function IntakeForm() {
     }
   };
 
-  const getZohoUrl = () => {
-    const nameTrimmed = fullName.trim();
-    const nameParts = nameTrimmed.split(" ");
-    const first = nameParts[0] || nameTrimmed;
-    const last = nameParts.slice(1).join(" ") || first;
-
-    const encodedFirst = encodeURIComponent(first);
-    const encodedLast = encodeURIComponent(last);
-    const encodedFullName = encodeURIComponent(nameTrimmed);
-    const encodedEmail = encodeURIComponent(email.trim());
-
-    const cloudList = selectedClouds.join(", ");
-    const reqText = requirements.trim();
-    const cleanReqs = reqText
-      ? `Role/Title: ${nameTrimmed} | Target Cloud(s): ${cloudList} - ${reqText}`
-      : `Role/Title: ${nameTrimmed} | Target Cloud(s): ${cloudList}`;
-    const encodedReqs = encodeURIComponent(cleanReqs);
-
-    const baseUrl = process.env.NEXT_PUBLIC_ZOHO_BOOKINGS_URL || "https://ashraytechnologies.zohobookings.in/446708000000032045";
-    
-    const params = [
-      `first_name=${encodedFirst}`,
-      `last_name=${encodedLast}`,
-      `name=${encodedFullName}`,
-      `Name=${encodedFullName}`,
-      `email=${encodedEmail}`,
-      `Email=${encodedEmail}`,
-      `Requirements=${encodedReqs}`,
-      `requirements=${encodedReqs}`,
-      `q_Requirements=${encodedReqs}`,
-      `q_requirements=${encodedReqs}`,
-      `cf_Requirements=${encodedReqs}`,
-      `notes=${encodedReqs}`,
-      `description=${encodedReqs}`,
-    ].join("&");
-
-    return `${baseUrl}?${params}`;
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !email.trim()) {
@@ -75,12 +36,52 @@ export default function IntakeForm() {
       return;
     }
     setErrorMessage("");
+    setSubmitted(true);
 
-    const zohoUrl = getZohoUrl();
+    const subject = encodeURIComponent(`Project Scoping Inquiry - ${fullName.trim()}`);
+    const body = encodeURIComponent(
+      `Name: ${fullName.trim()}\nEmail: ${email.trim()}\nTarget Clouds: ${selectedClouds.join(", ")}\n\nRequirements / Goals:\n${requirements.trim()}`
+    );
+
     if (typeof window !== "undefined") {
-      window.open(zohoUrl, "_blank");
+      window.location.href = `mailto:ashraytechnologies@gmail.com?subject=${subject}&body=${body}`;
     }
   };
+
+  if (submitted) {
+    return (
+      <div className="text-center py-8 space-y-4 relative z-10">
+        <div className="w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center mx-auto">
+          <span className="material-symbols-outlined text-2xl">check_circle</span>
+        </div>
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
+          Inquiry Submitted!
+        </h3>
+        <p className="text-slate-600 dark:text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+          Thank you for reaching out. Your scope brief details have been prepared and sent to{" "}
+          <a
+            href="mailto:ashraytechnologies@gmail.com"
+            className="font-bold text-blue-600 dark:text-cyan-400 hover:underline"
+          >
+            ashraytechnologies@gmail.com
+          </a>
+          . We will review your requirements and respond shortly.
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            setSubmitted(false);
+            setFullName("");
+            setEmail("");
+            setRequirements("");
+          }}
+          className="mt-4 px-5 py-2.5 rounded-lg bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 text-xs font-code font-bold hover:brightness-110 transition-all shadow-md"
+        >
+          SUBMIT ANOTHER INQUIRY
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 relative z-10" onSubmit={handleSubmit}>
@@ -182,8 +183,8 @@ export default function IntakeForm() {
           disabled={isSubmitting}
           className="w-full bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 text-sm uppercase tracking-wider font-code font-extrabold py-3.5 rounded-lg hover:brightness-110 active:scale-[0.99] transition-all flex items-center justify-center gap-2.5 disabled:opacity-50 glow-primary shadow-md border border-cyan-400/50"
         >
-          <span>BOOK ↗</span>
-          <span className="material-symbols-outlined text-base">calendar_month</span>
+          <span>SUBMIT INQUIRY ↗</span>
+          <span className="material-symbols-outlined text-base">send</span>
         </button>
       </div>
     </form>

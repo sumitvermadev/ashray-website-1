@@ -36,11 +36,11 @@ export default function Footer() {
                 </span>
                 <a
                   id="footer-email-link"
-                  href="mailto:info@ashraytechnologies.com"
+                  href="mailto:ashraytechnologies@gmail.com"
                   className="text-blue-600 dark:text-cyan-400 font-bold hover:underline text-sm inline-flex items-center gap-1.5"
                 >
                   <span className="material-symbols-outlined text-base">mail</span>
-                  <span>info@ashraytechnologies.com</span>
+                  <span>ashraytechnologies@gmail.com</span>
                 </a>
               </div>
 
@@ -91,14 +91,6 @@ export default function Footer() {
                 className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors text-base font-code"
               >
                 Operating Model
-              </Link>
-              <Link
-                id="footer-nav-scope-project"
-                href="/#intake-form"
-                onClick={(e) => handleNavClick(e, "intake-form")}
-                className="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors text-base font-code"
-              >
-                Scope Your Project
               </Link>
             </nav>
           </div>

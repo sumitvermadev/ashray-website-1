@@ -6,7 +6,6 @@ import HeroBackground from "@/components/HeroBackground";
 import HeroBackgroundAnimation from "@/components/HeroBackgroundAnimation";
 import AnimatedSection from "@/components/AnimatedSection";
 import CaseStudiesCarousel from "@/components/CaseStudiesCarousel";
-import IntakeForm from "@/components/IntakeForm";
 import Footer from "@/components/Footer";
 
 function SiteWideAmbientBackground() {
@@ -28,13 +27,9 @@ export default function Home() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      if (id === "intake-form") {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-      } else {
-        const yOffset = -90;
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }
+      const yOffset = -90;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
@@ -247,11 +242,11 @@ export default function Home() {
             <AnimatedSection direction="up" delay={0.4}>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 sm:pt-6">
                 <button
-                  id="hero-cta-intake"
-                  onClick={() => scrollToSection("intake-form")}
+                  id="hero-cta-architecture"
+                  onClick={() => scrollToSection("architecture")}
                   className="w-full sm:w-auto bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 px-9 py-4 text-xs uppercase tracking-widest font-code font-extrabold rounded-xl flex items-center justify-center gap-3 hover:brightness-110 active:scale-95 transition-all glow-primary shadow-xl group border border-cyan-400/50"
                 >
-                  <span>SCOPE YOUR PROJECT</span>
+                  <span>EXPLORE CAPABILITIES</span>
                   <span className="material-symbols-outlined text-base group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
@@ -716,26 +711,6 @@ export default function Home() {
               </div>
             </AnimatedSection>
           </div>
-        </section>
-
-        {/* Scope Project / Intake Form Section */}
-        <section id="intake-form" className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-margin-desktop max-w-max-width mx-auto scroll-mt-20">
-          <AnimatedSection direction="up">
-            <div className="bento-card p-6 sm:p-8 md:p-10 rounded-3xl shadow-2xl space-y-8 border border-slate-200 dark:border-cyan-500/40 relative overflow-hidden">
-              <div className="text-left border-b border-slate-200 dark:border-white/10 pb-5 relative z-10">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-slate-50 leading-tight">
-                  Schedule a 1:1 discovery call with us
-                </h2>
-              </div>
-
-              <div className="relative z-10">
-                <IntakeForm />
-              </div>
-
-              {/* Ambient Bottom Glow */}
-              <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-            </div>
-          </AnimatedSection>
         </section>
       </main>
       <Footer />

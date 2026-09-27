@@ -185,13 +185,13 @@ export default function OperatingModelPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link
-            href="/scope-project"
+          <a
+            href="mailto:ashraytechnologies@gmail.com"
             className="inline-flex items-center gap-2 bg-blue-600 dark:bg-cyan-500 text-white dark:text-slate-950 font-code font-extrabold text-base uppercase tracking-wider py-4 px-8 rounded-xl hover:brightness-110 transition-all glow-primary shadow-lg border border-cyan-400/50"
           >
-            <span>Start Your Project Scoping</span>
-            <span className="material-symbols-outlined text-xl">arrow_forward</span>
-          </Link>
+            <span>Contact Us</span>
+            <span className="material-symbols-outlined text-xl">mail</span>
+          </a>
         </div>
       </section>
 

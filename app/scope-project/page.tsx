@@ -3,8 +3,8 @@ import Footer from "@/components/Footer";
 import IntakeForm from "@/components/IntakeForm";
 
 export const metadata = {
-  title: "Scope Your Project & Book Discovery Call | Ashray Technologies",
-  description: "Log your Salesforce scoping brief and reserve your 30-minute discovery call session with senior engineering architects.",
+  title: "Scope Your Project | Ashray Technologies",
+  description: "Log your Salesforce scoping brief and connect with senior engineering architects at Ashray Technologies.",
 };
 
 export default function ScopeProjectPage() {
@@ -14,7 +14,7 @@ export default function ScopeProjectPage() {
 
       <section className="pt-32 pb-6 px-4 sm:px-6 md:px-margin-desktop max-w-max-width mx-auto text-center">
         <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50">
-          Schedule a 1:1 discovery call with us
+          Scope Your Project &amp; Get in Touch
         </h1>
       </section>
 
